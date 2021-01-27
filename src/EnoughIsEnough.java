@@ -37,45 +37,48 @@ public class EnoughIsEnough {
             index++;
             occurrences = 0;
         }
-
-
-            int maxOccur = occurrence.get(0);
-        for (int i = 0; i <occurrence.size() ; i++) {
-            if (maxOccur < occurrence.get(i)){
-                maxOccur = occurrence.get(i);
+        int maxOccur = 0;
+        if (elements.length > 0) {
+            maxOccur = occurrence.get(0);
+            for (int i = 0; i < occurrence.size(); i++) {
+                if (maxOccur < occurrence.get(i)) {
+                    maxOccur = occurrence.get(i);
+                }
             }
         }
 
 
         List<Integer> result = new ArrayList<>();
-        if (maxOccur < maxOccurrences){
-            for (int i = 0; i <element.get(i) ; i++) {
-                result.get(element.get(i));
-            }
-        }else if (count > 0) {
-            int first = 0;
-            boolean isDeleted = false;
-            while (count > 0) {
-                int elem = element.get(first);
-                int delete = occurrence.get(first) - maxOccurrences;
-                int ind = element.size() - 1;
-                while (ind > 0) {
-                    if (element.get(ind) == elem) {
-                        while (delete > 0) {
-                            element.remove(ind);
-                            isDeleted = true;
-                            delete--;
-                            break;
-                        }
-                    }
-                    ind--;
+        if (elements.length > 0) {
+            if (maxOccur < maxOccurrences) {
+                for (int i = 0; i < element.get(i); i++) {
+                    result.get(element.get(i));
                 }
+            } else if (count > 0) {
+                int first = 0;
+                boolean isDeleted = false;
+                while (count > 0) {
+                    int elem = element.get(first);
+                    int delete = occurrence.get(first) - maxOccurrences;
+                    int ind = element.size() - 1;
+                    while (ind > 0) {
+                        if (element.get(ind) == elem) {
+                            while (delete > 0) {
+                                element.remove(ind);
+                                isDeleted = true;
+                                delete--;
+                                break;
+                            }
+                        }
+                        ind--;
+                    }
 
-                if (isDeleted) {
-                    first++;
-                    count--;
-                } else {
-                    first++;
+                    if (isDeleted) {
+                        first++;
+                        count--;
+                    } else {
+                        first++;
+                    }
                 }
             }
         }
@@ -85,18 +88,20 @@ public class EnoughIsEnough {
         }
         int[]res = new int[result.size()];
 
-        for (int i = 0; i <result.size() ; i++) {
-            res[i] = result.get(i);
+        if (elements.length > 0) {
+            for (int i = 0; i < result.size(); i++) {
+                res[i] = result.get(i);
+            }
         }
 
-
+        System.out.println(Arrays.toString(res));
         return res;
 
     }
 
 
     public static void main(String[] args) {
-        int[] arr = new int[]{20, 37, 20, 21};
-        deleteNth(arr,  1);
+        int[] arr = new int[]{};
+        deleteNth(arr,  5);
     }
 }
