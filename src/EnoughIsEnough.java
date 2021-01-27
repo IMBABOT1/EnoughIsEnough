@@ -11,6 +11,7 @@ public class EnoughIsEnough {
         HashMap<Integer, Integer> map = new HashMap<>();
 
 
+
         for (int i = 0; i < elements.length; i++) {
             if (!map.containsKey(elements[i])) {
                 map.put(elements[i], 1);
@@ -46,13 +47,13 @@ public class EnoughIsEnough {
                 }
             }
         }
-
+        System.out.println(element);
 
         List<Integer> result = new ArrayList<>();
         if (elements.length > 0) {
             if (maxOccur < maxOccurrences) {
                 for (int i = 0; i < element.get(i); i++) {
-                    result.get(element.get(i));
+                    result.add(element.get(i));
                 }
             } else if (count > 0) {
                 int first = 0;
@@ -101,7 +102,7 @@ public class EnoughIsEnough {
 
 
     public static void main(String[] args) {
-        int[] arr = new int[]{};
-        deleteNth(arr,  5);
+        int[] arr = new int[]{3, 13, 13, 12, 0, 9, 0, 5, 5, 10, 3, 12, 11, 15, 6, 13};
+        deleteNth(arr,  9);
     }
 }
