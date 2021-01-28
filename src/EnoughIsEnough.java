@@ -78,71 +78,80 @@ public class EnoughIsEnough {
             }
         }
 
-        System.out.println(list);
-//
-//        List<Integer> result = new ArrayList<>();
-//
-//        if (elements.length > 0) {
-//            if (maxOccur < maxOccurrences) {
-//                for (int i = 0; i < element.size(); i++) {
-//                    result.add(element.get(i));
-//                }
-//            } else if (count > 0) {
-//                if (maxOccurrences == 0) {
-//                    element.clear();
-//                } else {
-//                    int first = 0;
-//                    boolean isDeleted = false;
-//                    while (count > 0) {
-//                        int elem = list.get(first);
-//                        int delete = occurrence.get(set.first()) - maxOccurrences;
-//                        int ind = element.size() - 1;
-//                        while (ind > 0) {
-//                            if (element.get(ind) == elem) {
-//                                while (delete > 0) {
-//                                    element.remove(ind);
-//                                    occurrence.remove(ind);
-//                                    isDeleted = true;
-//                                    delete--;
-//                                    break;
-//                                }
-//                            }
-//                            ind--;
-//                        }
-//                        if (isDeleted) {
-//                            first++;
-//                            count--;
-//                        } else {
-//                            first++;
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//
-//        int[] res = new int[element.size()];
-//        if (maxOccur > maxOccurrences || maxOccurrences == maxOccur) {
-//            for (int i = 0; i < element.size(); i++) {
-//                result.add(element.get(i));
-//            }
-//
-//
-//
-//            if (elements.length > 0) {
-//                for (int i = 0; i < result.size(); i++) {
-//                    res[i] = result.get(i);
-//                }
-//            }
-//        }else if (maxOccur < maxOccurrences){
-//            res = elements;
-//        }
-//
-//        System.out.println(Arrays.toString(res) + "res");
-//
-//        return res;
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        for (int i = 0; i < occurrence.size() ; i++) {
+            if (occurrence.get(i) >= maxOccurrences){
+                hashMap.put(element.get(i), occurrence.get(i));
+            }
+        }
 
-    return new int[]{};
+        System.out.println(hashMap);
+
+        System.out.println(list);
+
+        List<Integer> result = new ArrayList<>();
+
+        if (elements.length > 0) {
+            if (maxOccur < maxOccurrences) {
+                for (int i = 0; i < element.size(); i++) {
+                    result.add(element.get(i));
+                }
+            } else if (count > 0) {
+                if (maxOccurrences == 0) {
+                    element.clear();
+                } else {
+                    int first = 0;
+                    boolean isDeleted = false;
+                    while (count > 0) {
+                        int elem = list.get(first);
+                        int delete = occurrence.get(list.get(first)) - maxOccurrences;
+                        int ind = element.size() - 1;
+                        while (ind > 0) {
+                            if (element.get(ind) == elem) {
+                                while (delete > 0) {
+                                    element.remove(ind);
+                                    occurrence.remove(ind);
+                                    isDeleted = true;
+                                    delete--;
+                                    break;
+                                }
+                            }
+                            ind--;
+                        }
+                        if (isDeleted) {
+                            first++;
+                            count--;
+                        } else {
+                            first++;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        int[] res = new int[element.size()];
+        if (maxOccur > maxOccurrences || maxOccurrences == maxOccur) {
+            for (int i = 0; i < element.size(); i++) {
+                result.add(element.get(i));
+            }
+
+
+
+            if (elements.length > 0) {
+                for (int i = 0; i < result.size(); i++) {
+                    res[i] = result.get(i);
+                }
+            }
+        }else if (maxOccur < maxOccurrences){
+            res = elements;
+        }
+
+        System.out.println(Arrays.toString(res) + "res");
+
+        return res;
+
+
     }
 
 
